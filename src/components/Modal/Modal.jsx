@@ -1,8 +1,34 @@
-// Описание компонента <Modal>
-// При клике по элементу галереи должно открываться модальное окно с темным оверлеем и отображаться большая версия изображения. Модальное окно должно закрываться по нажатию клавиши ESC или по клику на оверлее.
-// Внешний вид похож на функционал этого VanillaJS-плагина, только вместо белого модального окна рендерится изображение (в примере нажми Run). Анимацию делать не нужно!
-// <div class="overlay">
-//   <div class="modal">
-//     <img src="" alt="" />
-//   </div>
-// </div>
+import React from 'react';
+import { Overlay, ModalImg } from './Modal.styled';
+
+export class Modal extends React.Component {
+  componentDidMount() {
+    document.addEventListener('keydown', this.onEsc);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.onEsc);
+  }
+
+  onEsc = e => {
+    if (e.key === 'Escape') {
+      this.props.onClose();
+    }
+  };
+
+  clickHandler = e => {
+    if (e.target === e.currentTarget) {
+      this.props.onClose();
+    }
+  };
+  render() {
+    const { isOpen } = this.props;
+    return (
+      <Overlay onClick={this.clickHandler} onKeyDown={this.onEsc}>
+        <ModalImg>
+          <img src={isOpen} alt="" />
+        </ModalImg>
+      </Overlay>
+    );
+  }
+}

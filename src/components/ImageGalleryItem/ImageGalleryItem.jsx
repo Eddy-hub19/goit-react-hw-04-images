@@ -1,5 +1,16 @@
 // Описание компонента <ImageGalleryItem>
 // Компонент элемента списка с изображением. Создает DOM-элемент следующей структуры.
-// <li class="gallery-item">
-//   <img src="" alt="" />
-// </li>
+
+import { GalleryItem, GalleryItemImg } from './GalleryItem.styled';
+
+export const ImageGalleryItem = ({ smallImg, bigImg, onSelect }) => {
+  return (
+    <GalleryItem>
+      <GalleryItemImg
+        src={smallImg}
+        alt="serchedImage"
+        onClick={() => onSelect(bigImg)}
+      />
+    </GalleryItem>
+  );
+};
