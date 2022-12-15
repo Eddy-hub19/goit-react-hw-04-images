@@ -19,15 +19,16 @@ export class Searchbar extends Component {
     this.setState({ querySearch: value.toLowerCase() });
   };
 
-  onInputSubmit = e => {
+  onSubmit = e => {
+    const { querySearch } = this.state;
     e.preventDefault();
 
-    if (this.state.querySearch.trim() === '') {
+    if (querySearch.trim() === '') {
       toast.error('Empty request');
       return;
     }
 
-    this.props.onSubmit(this.state.querySearch);
+    this.props.onSubmit(querySearch);
 
     this.setState({ querySearch: '' });
   };
@@ -36,7 +37,7 @@ export class Searchbar extends Component {
     const { querySearch } = this.state;
     return (
       <Search>
-        <SearchForm onSubmit={this.onInputSubmit}>
+        <SearchForm onSubmit={this.onSubmit}>
           <SearchFormBtn type="submit">
             <SearchFormBtnlabel>Search</SearchFormBtnlabel>
           </SearchFormBtn>

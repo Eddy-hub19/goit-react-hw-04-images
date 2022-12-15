@@ -1,7 +1,7 @@
-import React from 'react';
+import { Component } from 'react';
 import { Overlay, ModalImg } from './Modal.styled';
 
-export class Modal extends React.Component {
+export class Modal extends Component {
   componentDidMount() {
     document.addEventListener('keydown', this.onEsc);
   }

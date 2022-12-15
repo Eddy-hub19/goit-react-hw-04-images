@@ -17,7 +17,7 @@ export default class App extends Component {
     console.log(data);
   };
 
-  onFormSubmit = search => {
+  onSubmit = search => {
     this.setState({ search: search });
   };
 
@@ -29,7 +29,7 @@ export default class App extends Component {
     const { search, selectedImage } = this.state;
     return (
       <Container>
-        <Searchbar onSubmit={this.onFormSubmit} />
+        <Searchbar onSubmit={this.onSubmit} />
         <ImageGallery
           searchQuery={search}
           onChange={this.onSeachInfo}
