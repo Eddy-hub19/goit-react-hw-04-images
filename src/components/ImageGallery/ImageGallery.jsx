@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { getImages } from '../Services/api';
+import { getImages } from '../../Services/api';
 import { Button } from '../Button/Button';
 import { toast } from 'react-toastify';
 import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
