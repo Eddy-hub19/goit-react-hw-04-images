@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { getImages } from '../services/api';
 import { Button } from '../Button/Button';
 import { toast } from 'react-toastify';
-import { ImageGalleryItem } from 'ImageGallery.jsx';
+import { ImageGalleryItem } from './ImageGallery.jsx';
 import { Gallery } from './ImageGallery.styled';
 import Loader from '../Loader/Loader';
 
