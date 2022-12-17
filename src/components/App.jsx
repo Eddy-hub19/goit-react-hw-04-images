@@ -30,11 +30,7 @@ export default class App extends Component {
     return (
       <Container>
         <Searchbar onSubmit={this.onSubmit} />
-        <ImageGallery
-          searchQuery={search}
-          onChange={this.onSeachInfo}
-          onSelect={this.selectImage}
-        />
+
         <ToastContainer autoClose={4000} />
         {selectedImage !== null && (
           <Modal
@@ -42,6 +38,11 @@ export default class App extends Component {
             onClose={() => this.selectImage(null)}
           />
         )}
+        <ImageGallery
+          searchQuery={search}
+          onChange={this.onSeachInfo}
+          onSelect={this.selectImage}
+        />
       </Container>
     );
   }

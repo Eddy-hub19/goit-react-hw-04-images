@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { getImages } from '../../Services/api';
+import { getImages } from '../../services/api';
 import { Button } from '../Button/Button';
 import { toast } from 'react-toastify';
 import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
@@ -30,9 +30,9 @@ export class ImageGallery extends Component {
           toast('Sorry, nothing was found for your search');
         }
         const totalPages = Math.round(data.total / 12);
-        this.setState({ pages: totalPages });
         this.setState(prevState => ({
           data: [...prevState.data, ...data.hits],
+          pages: totalPages 
         }));
       } catch (error) {
         this.setState({ error: 'App crashed, try restarting' });
