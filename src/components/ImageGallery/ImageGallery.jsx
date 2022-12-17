@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { getImages } from '../../services/api';
 import { Button } from '../Button/Button';
 import { toast } from 'react-toastify';
-import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
+import { ImageGalleryItem } from 'ImageGallery.jsx';
 import { Gallery } from './ImageGallery.styled';
 import Loader from '../Loader/Loader';
 
@@ -32,7 +32,7 @@ export class ImageGallery extends Component {
         const totalPages = Math.round(data.total / 12);
         this.setState(prevState => ({
           data: [...prevState.data, ...data.hits],
-          pages: totalPages 
+          pages: totalPages,
         }));
       } catch (error) {
         this.setState({ error: 'App crashed, try restarting' });
