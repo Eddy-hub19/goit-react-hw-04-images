@@ -1,49 +1,41 @@
-import { Component } from 'react';
 import './Global.styled';
 import { Container } from './App.styled';
 import { Searchbar } from './Searchbar/Searchbar';
-import { ImageGallery } from './ImageGallery/ImageGallery';
 import { ToastContainer } from 'react-toastify';
 import { Modal } from './Modal/Modal';
 import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react';
+import { ImageGallery } from './ImageGallery/ImageGallery.jsx';
 
-export default class App extends Component {
-  state = {
-    search: '',
-    selectedImage: null,
-  };
+export const App = () => {
+  const [search, setSearch] = useState('');
+  const [selectedImage, setSelectedImage] = useState(null);
 
-  onSeachInfo = data => {
+  const onSeachInfo = data => {
     console.log(data);
   };
 
-  onSubmit = search => {
-    this.setState({ search: search });
+  const onSubmit = search => {
+    setSearch(search);
   };
 
-  selectImage = imgUrl => {
-    this.setState({ selectedImage: imgUrl });
+  const selectImage = imgUrl => {
+    setSelectedImage(imgUrl);
   };
 
-  render() {
-    const { search, selectedImage } = this.state;
-    return (
-      <Container>
-        <Searchbar onSubmit={this.onSubmit} />
+  return (
+    <Container>
+      <Searchbar onSubmit={onSubmit} />
 
-        <ToastContainer autoClose={4000} />
-        {selectedImage !== null && (
-          <Modal
-            isOpen={selectedImage}
-            onClose={() => this.selectImage(null)}
-          />
-        )}
-        <ImageGallery
-          searchQuery={search}
-          onChange={this.onSeachInfo}
-          onSelect={this.selectImage}
-        />
-      </Container>
-    );
-  }
-}
+      <ToastContainer autoClose={4000} />
+      {selectedImage !== null && (
+        <Modal isOpen={selectedImage} onClose={() => selectImage(null)} />
+      )}
+      <ImageGallery
+        searchQuery={search}
+        onChange={onSeachInfo}
+        onSelect={selectImage}
+      />
+    </Container>
+  );
+};
