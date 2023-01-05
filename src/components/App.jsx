@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import { Modal } from './Modal/Modal';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
-import { ImageGallery } from './ImageGallery/ImageGallery.jsx';
+import { ImageGalleryHooks } from './ImageGallery/ImageGallery.jsx';
 
 export const App = () => {
   const [search, setSearch] = useState('');
@@ -31,7 +31,7 @@ export const App = () => {
       {selectedImage !== null && (
         <Modal isOpen={selectedImage} onClose={() => selectImage(null)} />
       )}
-      <ImageGallery
+      <ImageGalleryHooks
         searchQuery={search}
         onChange={onSeachInfo}
         onSelect={selectImage}
